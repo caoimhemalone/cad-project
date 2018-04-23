@@ -7,10 +7,13 @@ ruby '2.4.0'
 #Bootstrap
 gem 'bootstrap', '~> 4.0.0.alpha3'
 #For JQuery
-gem 'jquery-rails'
+#gem 'jquery-rails'
 #Custom Gem
 
+#For Calendar
+#gem 'jquery-ui-rails'
 
+gem 'jquery-ui-rails', '~> 4.2.1'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

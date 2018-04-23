@@ -1,13 +1,15 @@
+
 <p id="notice"><%= notice %></p>
 
+<div class="wrapper">
 <h1>Patients</h1>
 
-<%= form_tag patients_path, :method => 'get' do %> <!-- Passes patient index, method is get -->
-  <%= text_field_tag :search, params[:search] %> <!-- passes value search for parameter -->
-  <%= submit_tag "Search By Last Name" %>
-<% end %>
+<!--<%= form_tag patients_path, :method => 'get' do %> <!-- Passes patient index, method is get -->
+<!--  <%= text_field_tag :search, params[:search] %> <!-- passes value search for parameter -->
+<!--  <%= submit_tag "Search By Last Name" %>-->
+<!--<% end %>-->
 
-<%= link_to "Advanced Search", new_search_path %>
+<!--<%= link_to "Advanced Search", new_search_path %>-->
 
 <table class="table, col-sm-12" >
   <thead>
@@ -19,6 +21,7 @@
       <th>Phonenumber</th>
       <th>Injury</th>
       <th>Infection</th>
+      <th> Appointment date </th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -33,6 +36,7 @@
         <td><%= patient.phonenumber %></td>
         <td><%= patient.injury %></td>
         <td><%= patient.infection %></td>
+        <td><%= patient.appointment_time %></td>
         <td><%= link_to 'Show', patient %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -44,3 +48,22 @@
 <br>
 
 <%= link_to 'New Patient', new_patient_path %>
+
+<div class="col-sm-12" id="appointmentsContainer" style="background-color: #fff">
+<h1 style="margin-top: 30px"> Appointments </h1>
+
+<div id="appointmentDate" >
+  <%= calendar do |date| %>
+    <%= date.day %>
+    <% if @patients_appointments[date] %>
+      <ul>
+        <% @patients_appointments[date].each do |appointment_time| %>
+          <li> <%= link_to patient.firstname, patient %></li>
+        <% end %>
+      </ul>
+  <% end %>
+  <% end %>
+</div>
+</div>
+
+</div>

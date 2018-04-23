@@ -10,65 +10,72 @@
   </head>
 
   <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">CAD - Hospital</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
+          <%if user_signed_in? %>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="/patients/">Patients <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+        
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <%if user_signed_in? %>
+              <a class="nav-link" <%= link_to "Profile", user_path(current_user),{ :class => "link"}%> </a>
+            <% else %>
+              <a class="nav-link">
+                User
+              </a> 
+            <% end %>
           </li>
+          <% end %>
+          <% if user_signed_in? %>
+           <a class="nav-link" href="/users/edit">
+           <li class = "edit"
+           <%= link_to('Edit User', edit_user_registration_path) %>
+           </li>
+          <% else %>
+           <a class="nav-link" href="/users/sign_up">
+           <li
+           <%= link_to('Register', new_user_registration_path) %>
+           </li>
+          <% end %> 
+          <% if user_signed_in? %>
+           <a class="nav-link"
+           <%= link_to('Logout', destroy_user_session_path, :method => :delete ) %>
+           </li>
+          <% else %>
+           <a class="nav-link" href="/users/sign_in">
+           <li
+           <%= link_to('Login', new_user_registration_path) %>
+           </li>
+          <% end %>
+          <% if user_signed_in? %>
+          <li class ="search-bar" style="padding-left: 50em;">
+            <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search by Lastname" %>
+            <%= submit_tag "Search" %>
+          </li>
+          <% end %>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <% end %>
+    
       </div>
     </nav>
     
-    <div class="row" style="background-color:pink;">
-      <div class="col-sm-12" style="background-color:yellow; margin-left: 2em; margin-right: 2em;" >
+    <div class="row" >
+      <div class="col-sm-12" >
         <%= yield %>
       </div><!-- end of col-sm-8 -->
-      <!--<div class="col-sm-4" style="background-color: blue;">-->
-        <!--<div class="sidebar">-->
-        <!--  <h3> My sidebar</h3>-->
-        <!--  <p>Click on things</p>-->
-        <!--</div> <!-- end of sidebar -->
-    <!--  </div> <!-- end of col-sm-4 -->
+
     </div> <!-- end of row -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
-    <nav role="navigation">
-      <div class="inner">
-        <a href="#nav" class="nav-collapse" id="nav-collapse">Menu</a>
-        <ul class="nav" id="nav">
-          <%= render 'devise/menu/registration_items' %>
-          <%= render 'devise/menu/login_items' %>
-        </ul>
-      </div>
-    </nav>
     </div>
     
   </body>

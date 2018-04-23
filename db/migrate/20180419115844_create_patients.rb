@@ -4,6 +4,7 @@ class CreatePatients < ActiveRecord::Migration[5.2]
       t.string :firstname
       t.string :lastname
       t.datetime :dob
+      t.datetime :appointment_time
       t.string :address
       t.integer :phonenumber
       t.string :injury

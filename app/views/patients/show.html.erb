@@ -36,5 +36,10 @@
   <%= @patient.infection %>
 </p>
 
+<p>
+  <strong>Appointment:</strong>
+  <%= @patient.appointment_time %>
+</p>
+
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>

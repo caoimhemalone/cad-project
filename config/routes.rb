@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'users/show'
+  get 'profile/new'
+  get 'profile/create'
   devise_for :users
     resources:patients
     resources :users

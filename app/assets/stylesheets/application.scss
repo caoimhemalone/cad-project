@@ -12,8 +12,81 @@
  *
  *= require_tree .
  *= require_self
+
  */
 
 
 @import "bootstrap";
 @import "users";
+
+
+.navbar{
+    margin-bottom: 30px;
+}
+
+
+.search-bar a:hover {
+    background-color: #ddd;
+    color: white !important;
+}
+
+
+#search-form{
+    border-radius: 25px;
+}
+
+.wrapper {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+body {
+     background-color: #E7E8E3;
+}
+
+#appointmentDate .calendar {
+    border-collapse: collapse;
+    width: 100%;
+    
+    td, th {
+        font-family: "Lucida Grande", arial, helvetica, sans-serif;
+        font-size: 10px;
+        padding: 6px;
+        border: 1px solid #999;
+    }
+    
+    th {
+        background: #DDD;
+        color: #666;
+        text-align: center;
+        width: 14.2857142857143;
+    }
+    
+    td {
+        background: #fff;
+        color: #777;
+        height: 80px;
+        vertical-align: top;
+        font-size: 16px;
+    }
+    
+    .notmonth {color: #CCC;}
+    .today {background-color: #D7F2FF;}
+}
+
+#appointmentDate #month {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    
+    a{
+        text-decoration: none;
+        padding: 0 10px;
+        color: #999;
+    }
+}
+
+#appointmentDate ul {
+    font-size: 11px;
+    padding-left: 20px;
+}

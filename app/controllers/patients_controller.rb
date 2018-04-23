@@ -6,6 +6,7 @@ class PatientsController < ApplicationController
   def index
     # @patients = Patient.all
     @patients = Patient.search(params[:search]) #Compare the variables with the parameters of the search
+    @patients_appointments = @patients.group_by(&:appointment_time)
   
   
   end

@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :dob %>
-    <%= form.date_select :dob, id: :patient_dob %>
+    <%= form.date_field :dob, id: :patient_dob %>
   </div>
   
 
@@ -45,6 +45,11 @@
   <div class="field">
     <%= form.label :infection %>
     <%= form.text_field :infection, id: :patient_infection %>
+  </div>
+  
+   <div class="field">
+    <%= form.label :appointment_time %>
+    <%= form.date_field :appointment_time, id: :patient_app %>
   </div>
 
   <div class="actions">

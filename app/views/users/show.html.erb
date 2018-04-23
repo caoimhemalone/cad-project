@@ -6,13 +6,13 @@
 
 <% if user_signed_in? %>
 
-<p><%= @user.username %></p>
+<p>Username: <%= @user.username %></p>
+<p>Birthday: <%= @user.birthday %></p>
 
-<h2> Patients </h2>
-<% @user_posts.each do |patient| %>
-    <%= link_to patient.firstname+ ' ' + patient.surname, patient_path(patient) %> <br/>
+
+
     
-<% end %> 
+ 
 
 <% else %>
 
