@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+<h1><%= full_name %></h1>
+<% else %>
+<h1> Sign in to continue</h1>
+<% end %>
+
+<% if user_signed_in? %>
+
+<p><%= @user.username %></p>
+
+<h2> Patients </h2>
+<% @user_posts.each do |patient| %>
+    <%= link_to patient.firstname+ ' ' + patient.surname, patient_path(patient) %> <br/>
+    
+<% end %> 
+
+<% else %>
+
+<% end %>
